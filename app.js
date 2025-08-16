@@ -2,14 +2,6 @@
 
 // Implementa una función para agregar amigos.
 
-//Desarrolla una función, que permita al usuario ingresar un nombre en el campo de texto y añadirlo a la lista de amigos creada anteriormente.
-//Tareas específicas:
-
-//Capturar el valor del campo de entrada: Utilizar document.getElementById o document.querySelector para obtener el texto ingresado por el usuario.
-
-//Validar la entrada: Implementar una validación para asegurarse de que el campo no esté vacío. Si está vacío, mostrar un alert con un mensaje de error: "Por favor, inserte un nombre."
-
-
 let amigos = [];
 
 function agregarAmigo() {
@@ -36,10 +28,28 @@ function actualizarListaAmigos() {
     const listaAmigos = document.getElementById("listaAmigos");
     listaAmigos.innerHTML = "";  //liampiamos la lista actual
 
-    amigos.forEach(amigo => {
-        const nuevoAmigo = document.createElement("li");
-        nuevoAmigo.textContent = amigo;
-        listaAmigos.appendChild(nuevoAmigo);
-    });
+    for (let i = 0; i < amigos.length; i++) {
+        const li = document.createElement("li");
+        li.textContent = amigos[i];
+        listaAmigos.appendChild(li);
+    }
 
 }
+//esta funcion nos permite seleccionar un amigo de manera aleatoria
+function sortearAmigo() {
+    if (amigos.length === 0) {
+        alert("No hay amigos disponibles para seleccionar.");
+        return;
+    }
+
+    const indiceAleatorio = Math.floor(Math.random() * amigos.length);
+    const amigoSeleccionado = amigos[indiceAleatorio];
+
+    // Mostrar el amigo seleccionado
+    const resultado = document.getElementById("resultado");
+    resultado.innerHTML = "Amigo seleccionado: " + amigoSeleccionado;
+}
+
+
+
+
